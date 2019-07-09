@@ -4,9 +4,8 @@ import styled from '@emotion/styled';
 import {isArray} from 'lodash';
 
 import defaultAnimations from '../../themes/animations';
-import {randomString} from '../../util';
 import {Ul} from '../common';
-import NodeHeader from '../NodeHeader';
+import NodeHeader from '../header';
 import Drawer from './Drawer';
 import Loading from './Loading';
 
@@ -20,6 +19,41 @@ class TreeNode extends PureComponent {
         const {toggled} = node;
         if (onToggle) {
             onToggle(node, !toggled);
+        }
+    }
+
+    handleCreateFile() {
+        const { node, handleCreateFile} = this.props;
+        if (handleCreateFile) {
+            handleCreateFile(node);
+        }
+    }
+
+    handleCreateFolder() {
+        const { node, handleCreateFolder} = this.props;
+        if (handleCreateFolder) {
+            handleCreateFolder(node);
+        }
+    }
+
+    handleDeleteFile() { 
+        const { node, handleDeleteFile} = this.props;
+        if (handleDeleteFile) {
+            handleDeleteFile(node);
+        }
+    }
+
+    handleRename() {
+        const { node, handleRename} = this.props;
+        if (handleRename) {
+            handleRename(node);
+        }
+    }
+
+    handleUpload() {
+        const { node, handleUpload} = this.props;
+        if (handleUpload) {
+            handleUpload(node);
         }
     }
 
@@ -45,7 +79,7 @@ class TreeNode extends PureComponent {
     }
 
     renderChildren(decorators) {
-        const {animations, decorators: propDecorators, node, style, onToggle} = this.props;
+        const {animations, decorators: propDecorators, node, style, onToggle, handleCreateFile, handleCreateFolder, handleDeleteFile, handleRename, handleUpload} = this.props;
 
         if (node.loading) {
             return (
@@ -60,11 +94,11 @@ class TreeNode extends PureComponent {
 
         return (
             <Ul style={style.subtree}>
-                {children.map(child => (
+                {children.map((child, index) => (
                     <TreeNode
-                        {...{onToggle, animations, style}}
+                        {...{onToggle, handleCreateFile, handleCreateFolder, handleDeleteFile, handleRename, handleUpload, animations, style}}
                         decorators={propDecorators}
-                        key={child.id || randomString()}
+                        key={child.id || index}
                         node={child}
                     />
                 ))}
@@ -79,7 +113,7 @@ class TreeNode extends PureComponent {
         const {...restAnimationInfo} = animations.drawer;
         return (
             <Li style={style.base}>
-                <NodeHeader {...{decorators, animations, node, style}} onClick={() => this.onClick()}/>
+                <NodeHeader {...{decorators, animations, node, style}} handleUpload={() => this.handleUpload()} handleCreateFolder={() => this.handleCreateFolder()} handleRename={() => this.handleRename()} handleDeleteFile={() => this.handleDeleteFile()} handleCreateFile={() => this.handleCreateFile()} onClick={() => this.onClick()}/>
                 <Drawer restAnimationInfo={{...restAnimationInfo}}>
                     {node.toggled ? this.renderChildren(decorators, animations) : null}
                 </Drawer>
@@ -90,6 +124,11 @@ class TreeNode extends PureComponent {
 
 TreeNode.propTypes = {
     onToggle: PropTypes.func,
+    handleCreateFile: PropTypes.func,
+    handleCreateFolder: PropTypes.func,
+    handleDeleteFile: PropTypes.func,
+    handleRename: PropTypes.func,
+    handleUpload: PropTypes.func,
     style: PropTypes.object.isRequired,
     node: PropTypes.object.isRequired,
     decorators: PropTypes.object.isRequired,

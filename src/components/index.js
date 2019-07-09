@@ -4,17 +4,16 @@ import {castArray} from 'lodash';
 
 import defaultTheme from '../themes/default';
 import defaultAnimations from '../themes/animations';
-import {randomString} from '../util';
 import {Ul} from './common';
 import defaultDecorators from './Decorators';
 import TreeNode from './TreeNode';
 
-const TreeBeard = ({animations, decorators, data, onToggle, style}) => (
+const TreeBeard = ({animations, decorators, data, onToggle, handleCreateFile, handleCreateFolder, handleDeleteFile, handleRename, handleUpload, style}) => (
     <Ul style={{...defaultTheme.tree.base, ...style.tree.base}}>
         {castArray(data).map(node => (
             <TreeNode
-                {...{decorators, node, onToggle, animations}}
-                key={node.id || randomString()}
+                {...{decorators, node, onToggle, handleCreateFile, handleCreateFolder, handleDeleteFile, handleRename, handleUpload, animations}}
+                key={node.id}
                 style={{...defaultTheme.tree.node, ...style.tree.node}}
             />
         ))}
@@ -32,6 +31,11 @@ TreeBeard.propTypes = {
         PropTypes.bool
     ]),
     onToggle: PropTypes.func,
+    handleCreateFile: PropTypes.func,
+    handleCreateFolder: PropTypes.func,
+    handleDeleteFile: PropTypes.func,
+    handleRename: PropTypes.func,
+    handleUpload: PropTypes.func,
     decorators: PropTypes.object
 };
 

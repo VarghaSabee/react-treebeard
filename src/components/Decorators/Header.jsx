@@ -1,7 +1,8 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Div} from '../common';
+import { Div } from '../common'
 
 const Header = ({node, style}) => (
     <Div style={style.base}>
