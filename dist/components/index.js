@@ -25,7 +25,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -38,12 +40,13 @@ var TreeBeard = function TreeBeard(_ref) {
       handleCreateFolder = _ref.handleCreateFolder,
       handleDeleteFile = _ref.handleDeleteFile,
       handleRename = _ref.handleRename,
+      handleMoveTo = _ref.handleMoveTo,
       handleUpload = _ref.handleUpload,
       style = _ref.style;
-  return _react["default"].createElement(_common.Ul, {
-    style: _objectSpread({}, _default2["default"].tree.base, style.tree.base)
+  return /*#__PURE__*/_react["default"].createElement(_common.Ul, {
+    style: _objectSpread({}, _default2["default"].tree.base, {}, style.tree.base)
   }, (0, _lodash.castArray)(data).map(function (node) {
-    return _react["default"].createElement(_TreeNode["default"], _extends({
+    return /*#__PURE__*/_react["default"].createElement(_TreeNode["default"], _extends({
       decorators: decorators,
       node: node,
       onToggle: onToggle,
@@ -51,11 +54,12 @@ var TreeBeard = function TreeBeard(_ref) {
       handleCreateFolder: handleCreateFolder,
       handleDeleteFile: handleDeleteFile,
       handleRename: handleRename,
+      handleMoveTo: handleMoveTo,
       handleUpload: handleUpload,
       animations: animations
     }, {
       key: node.id,
-      style: _objectSpread({}, _default2["default"].tree.node, style.tree.node)
+      style: _objectSpread({}, _default2["default"].tree.node, {}, style.tree.node)
     }));
   }));
 };
@@ -69,6 +73,7 @@ TreeBeard.propTypes = {
   handleCreateFolder: _propTypes["default"].func,
   handleDeleteFile: _propTypes["default"].func,
   handleRename: _propTypes["default"].func,
+  handleMoveTo: _propTypes["default"].func,
   handleUpload: _propTypes["default"].func,
   decorators: _propTypes["default"].object
 };

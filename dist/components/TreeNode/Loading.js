@@ -16,9 +16,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var Loading = function Loading(_ref) {
   var style = _ref.style,
       decorators = _ref.decorators;
-  return _react["default"].createElement(_common.Ul, {
+  return /*#__PURE__*/_react["default"].createElement(_common.Ul, {
     style: style.subtree
-  }, _react["default"].createElement("li", null, _react["default"].createElement(decorators.Loading, {
+  }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement(decorators.Loading, {
     style: style.loading
   })));
 };

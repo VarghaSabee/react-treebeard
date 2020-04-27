@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var Drawer = function Drawer(_ref) {
   var restAnimationInfo = _ref.restAnimationInfo,
       children = _ref.children;
-  return _react["default"].createElement(_velocityReact.VelocityTransitionGroup, restAnimationInfo, children);
+  return /*#__PURE__*/_react["default"].createElement(_velocityReact.VelocityTransitionGroup, restAnimationInfo, children);
 };
 
 Drawer.propTypes = {

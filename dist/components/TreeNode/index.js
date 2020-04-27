@@ -25,11 +25,15 @@ var _Loading = _interopRequireDefault(require("./Loading"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -41,15 +45,19 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var Li = (0, _styled["default"])('li', {
   shouldForwardProp: function shouldForwardProp(prop) {
@@ -60,15 +68,15 @@ var Li = (0, _styled["default"])('li', {
   return style;
 });
 
-var TreeNode =
-/*#__PURE__*/
-function (_PureComponent) {
+var TreeNode = /*#__PURE__*/function (_PureComponent) {
   _inherits(TreeNode, _PureComponent);
+
+  var _super = _createSuper(TreeNode);
 
   function TreeNode() {
     _classCallCheck(this, TreeNode);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(TreeNode).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   _createClass(TreeNode, [{
@@ -128,11 +136,22 @@ function (_PureComponent) {
       }
     }
   }, {
-    key: "handleUpload",
-    value: function handleUpload() {
+    key: "handleMoveTo",
+    value: function handleMoveTo() {
       var _this$props6 = this.props,
           node = _this$props6.node,
-          handleUpload = _this$props6.handleUpload;
+          handleMoveTo = _this$props6.handleMoveTo;
+
+      if (handleMoveTo) {
+        handleMoveTo(node);
+      }
+    }
+  }, {
+    key: "handleUpload",
+    value: function handleUpload() {
+      var _this$props7 = this.props,
+          node = _this$props7.node,
+          handleUpload = _this$props7.handleUpload;
 
       if (handleUpload) {
         handleUpload(node);
@@ -141,9 +160,9 @@ function (_PureComponent) {
   }, {
     key: "animations",
     value: function animations() {
-      var _this$props7 = this.props,
-          animations = _this$props7.animations,
-          node = _this$props7.node;
+      var _this$props8 = this.props,
+          animations = _this$props8.animations,
+          node = _this$props8.node;
 
       if (!animations) {
         return {
@@ -160,29 +179,30 @@ function (_PureComponent) {
   }, {
     key: "decorators",
     value: function decorators() {
-      var _this$props8 = this.props,
-          decorators = _this$props8.decorators,
-          node = _this$props8.node;
+      var _this$props9 = this.props,
+          decorators = _this$props9.decorators,
+          node = _this$props9.node;
       var nodeDecorators = node.decorators || {};
       return Object.assign({}, decorators, nodeDecorators);
     }
   }, {
     key: "renderChildren",
     value: function renderChildren(decorators) {
-      var _this$props9 = this.props,
-          animations = _this$props9.animations,
-          propDecorators = _this$props9.decorators,
-          node = _this$props9.node,
-          style = _this$props9.style,
-          onToggle = _this$props9.onToggle,
-          handleCreateFile = _this$props9.handleCreateFile,
-          handleCreateFolder = _this$props9.handleCreateFolder,
-          handleDeleteFile = _this$props9.handleDeleteFile,
-          handleRename = _this$props9.handleRename,
-          handleUpload = _this$props9.handleUpload;
+      var _this$props10 = this.props,
+          animations = _this$props10.animations,
+          propDecorators = _this$props10.decorators,
+          node = _this$props10.node,
+          style = _this$props10.style,
+          onToggle = _this$props10.onToggle,
+          handleCreateFile = _this$props10.handleCreateFile,
+          handleCreateFolder = _this$props10.handleCreateFolder,
+          handleDeleteFile = _this$props10.handleDeleteFile,
+          handleRename = _this$props10.handleRename,
+          handleMoveTo = _this$props10.handleMoveTo,
+          handleUpload = _this$props10.handleUpload;
 
       if (node.loading) {
-        return _react["default"].createElement(_Loading["default"], {
+        return /*#__PURE__*/_react["default"].createElement(_Loading["default"], {
           decorators: decorators,
           style: style
         });
@@ -194,15 +214,16 @@ function (_PureComponent) {
         children = children ? [children] : [];
       }
 
-      return _react["default"].createElement(_common.Ul, {
+      return /*#__PURE__*/_react["default"].createElement(_common.Ul, {
         style: style.subtree
       }, children.map(function (child, index) {
-        return _react["default"].createElement(TreeNode, _extends({
+        return /*#__PURE__*/_react["default"].createElement(TreeNode, _extends({
           onToggle: onToggle,
           handleCreateFile: handleCreateFile,
           handleCreateFolder: handleCreateFolder,
           handleDeleteFile: handleDeleteFile,
           handleRename: handleRename,
+          handleMoveTo: handleMoveTo,
           handleUpload: handleUpload,
           animations: animations,
           style: style
@@ -218,17 +239,17 @@ function (_PureComponent) {
     value: function render() {
       var _this = this;
 
-      var _this$props10 = this.props,
-          node = _this$props10.node,
-          style = _this$props10.style;
+      var _this$props11 = this.props,
+          node = _this$props11.node,
+          style = _this$props11.style;
       var decorators = this.decorators();
       var animations = this.animations();
 
       var restAnimationInfo = _extends({}, animations.drawer);
 
-      return _react["default"].createElement(Li, {
+      return /*#__PURE__*/_react["default"].createElement(Li, {
         style: style.base
-      }, _react["default"].createElement(_header["default"], _extends({
+      }, /*#__PURE__*/_react["default"].createElement(_header["default"], _extends({
         decorators: decorators,
         animations: animations,
         node: node,
@@ -243,6 +264,9 @@ function (_PureComponent) {
         handleRename: function handleRename() {
           return _this.handleRename();
         },
+        handleMoveTo: function handleMoveTo() {
+          return _this.handleMoveTo();
+        },
         handleDeleteFile: function handleDeleteFile() {
           return _this.handleDeleteFile();
         },
@@ -252,7 +276,7 @@ function (_PureComponent) {
         onClick: function onClick() {
           return _this.onClick();
         }
-      })), _react["default"].createElement(_Drawer["default"], {
+      })), /*#__PURE__*/_react["default"].createElement(_Drawer["default"], {
         restAnimationInfo: _objectSpread({}, restAnimationInfo)
       }, node.toggled ? this.renderChildren(decorators, animations) : null));
     }
@@ -267,6 +291,7 @@ TreeNode.propTypes = {
   handleCreateFolder: _propTypes["default"].func,
   handleDeleteFile: _propTypes["default"].func,
   handleRename: _propTypes["default"].func,
+  handleMoveTo: _propTypes["default"].func,
   handleUpload: _propTypes["default"].func,
   style: _propTypes["default"].object.isRequired,
   node: _propTypes["default"].object.isRequired,

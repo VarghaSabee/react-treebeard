@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import shallowEqual from 'shallowequal';
 import deepEqual from 'deep-equal';
@@ -20,22 +20,48 @@ class NodeHeader extends Component {
             }
         }
 
-        return !deepEqual(props.animations, nextProps.animations, {strict: true});
+        return !deepEqual(props.animations, nextProps.animations, { strict: true });
     }
 
     render() {
-        const {animations, decorators, node, onClick, handleCreateFile, handleCreateFolder, handleDeleteFile, handleRename, handleUpload, style} = this.props;
-        const {active, children} = node;
+        const {
+            animations,
+            decorators,
+            node,
+            onClick,
+            handleCreateFile,
+            handleCreateFolder,
+            handleDeleteFile,
+            handleRename,
+            handleMoveTo,
+            handleUpload,
+            style,
+        } = this.props;
+        const { active, children } = node;
         const terminal = !children;
         let styles;
         if (active) {
-            styles = Object.assign(style, {container: {...style.link, ...style.activeLink}});
+            styles = Object.assign(style, {
+                container: { ...style.link, ...style.activeLink },
+            });
         } else {
             styles = style;
         }
         return (
             <decorators.Container
-                {...{animations, decorators, node, onClick, handleCreateFile, handleCreateFolder, handleDeleteFile, handleRename, handleUpload, terminal}}
+                {...{
+                    animations,
+                    decorators,
+                    node,
+                    onClick,
+                    handleCreateFile,
+                    handleCreateFolder,
+                    handleDeleteFile,
+                    handleRename,
+                    handleMoveTo,
+                    handleUpload,
+                    terminal,
+                }}
                 style={styles}
             />
         );
@@ -45,16 +71,15 @@ class NodeHeader extends Component {
 NodeHeader.propTypes = {
     style: PropTypes.object.isRequired,
     decorators: PropTypes.object.isRequired,
-    animations: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.bool
-    ]).isRequired,
+    animations: PropTypes.oneOfType([PropTypes.object, PropTypes.bool])
+        .isRequired,
     node: PropTypes.object.isRequired,
     onClick: PropTypes.func,
     handleCreateFile: PropTypes.func,
     handleCreateFolder: PropTypes.func,
     handleDeleteFile: PropTypes.func,
     handleRename: PropTypes.func,
+    handleMoveTo: PropTypes.func,
     handleUpload: PropTypes.func,
 };
 

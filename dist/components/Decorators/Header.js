@@ -16,9 +16,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var Header = function Header(_ref) {
   var node = _ref.node,
       style = _ref.style;
-  return _react["default"].createElement(_common.Div, {
+  return /*#__PURE__*/_react["default"].createElement(_common.Div, {
     style: style.base
-  }, _react["default"].createElement(_common.Div, {
+  }, /*#__PURE__*/_react["default"].createElement(_common.Div, {
     style: style.title
   }, node.name));
 };

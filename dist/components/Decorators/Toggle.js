@@ -30,14 +30,14 @@ var Toggle = function Toggle(_ref2) {
       width = style.width;
   var midHeight = height * 0.5;
   var points = "0,0 0,".concat(height, " ").concat(width, ",").concat(midHeight);
-  return _react["default"].createElement(_common.Div, {
+  return /*#__PURE__*/_react["default"].createElement(_common.Div, {
     style: style.base
-  }, _react["default"].createElement(_common.Div, {
+  }, /*#__PURE__*/_react["default"].createElement(_common.Div, {
     style: style.wrapper
-  }, _react["default"].createElement("svg", {
+  }, /*#__PURE__*/_react["default"].createElement("svg", {
     height: height,
     width: width
-  }, _react["default"].createElement(Polygon, {
+  }, /*#__PURE__*/_react["default"].createElement(Polygon, {
     points: points,
     style: style.arrow
   }))));

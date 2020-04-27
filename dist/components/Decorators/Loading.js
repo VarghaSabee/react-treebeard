@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var Loading = (0, _styled["default"])(function (_ref) {
   var className = _ref.className;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: className
   }, "loading...");
 })(function (_ref2) {
